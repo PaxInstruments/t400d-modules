@@ -41,6 +41,20 @@ This alcohol gas sensor is sold by Sparkfun (https://www.sparkfun.com/products/8
 
 This sensor is used in the DrinkShield Arduino (http://shieldlist.org/gfxhax/drinkshield). Eagle and Arduino source can be found at https://code.google.com/p/drinkshield/
 
+### Perf board
+Simple module with a perfboard pattern.
+
+Three perfboard modules installed in a prototype of the T400D:  
+![image](perfboard-pcb.png)
+
+### Surface mount breakout
+We can make breakout modules for various surface mount footprints. The remaining area can be a series of SMT pads such that passive components can be mounted to the board and traces made by dridging with solder.
+
+The split vias along the edges can be used to connect from one side to another.
+
+Here is what the patter can look like:  
+![image](smd-proto-pattern.png)
+
 ### Real time clock
 Module for the RTC used in the T400. The RTC module should also include a backkup battery.
 
@@ -71,6 +85,9 @@ Sample schematic from the T400:
 ### Buzzer
 A simple module with a buzzer.
 
+We can get fancy and run the buzzer via the 3.3V line.
+![image](buzzer-schematic.png)
+
 ### Arduino to Nokia brdige
 A discrete module for controlling old Nokia phones. The phone would act as a GSM modem. This would be a low cost way for a person to add GSM data capability to their project.
 
@@ -79,7 +96,7 @@ This would be a very simple PCB. The kit would have to include a cable.
 From [Ilias Giechaskiel's project]()https://ilias.giechaskiel.com/posts/arduino_sms/index.html):
 ![image](nokia-bridge.png)
 
-See http://hackaday.com/2015/01/01/controlling-nokia-phones-with-arduino/
+See http://hackaday.com/2015/01/01/controlling-nokia-phones-with-arduino/ and http://murchlabs.com/send-sms-from-your-arduino/
 
 ### Heartbeat detector
 This device optically detects a human pulse and is simple enough to be a discrete module.
@@ -101,6 +118,13 @@ The circuitry for this device is simple, but it would take up the entire module 
 
 See http://shieldlist.org/oceancontrols/tcmux
 
+### Electrical conductivity meter
+See http://hackaday.com/2014/11/10/accurately-measuring-electrical-conductivity/
+
+Sparkey's Widgets makes a small conductivity interface (https://www.sparkyswidgets.com/product/miniec-ec-interface/). It looks pretty small. Maybe we can make a discrete module with this.
+
+![image](electrical-conductivity-pcb.png)
+
 ### pH meter
 The circuitry to measure pH is too complex for a single discrete module, so we would have to make a functional device board. It should include the ability to read from a pH sensor, compensate using a temperature sensor, and track time using an RTC and backup battery. It may also include a buzzer for pH out-of-range alarms.
 
@@ -108,6 +132,9 @@ See the pHduino https://code.google.com/p/phduino/
 
 Schematic from the pHduino:  
 ![image](phduino-schematic.png)
+
+Upon further investigation, sparkyswidgets.com makes a pH interface (https://www.sparkyswidgets.com/product/miniph/) that seems pretty small. Maybe we can use that and make a discrete module.
+![image](mini-pH-interface-pcb.png)
 
 ### Mitutoyo SPC Interface
 Redesign of Zach's Mitutoyo-SPC-Interface into the T400 body. This would work best if we can make it a breakout board for the T400D development platform.
@@ -118,11 +145,6 @@ All the interfaces can share the same GND, VCC, and CLK. Each interface requires
 ===
 ===
 ===
-
-### Fat analyzer
-Probably not this one because it has the potental to harm a person. This must be researched further.
-
-See http://hackaday.com/2015/01/10/diy-electrical-body-fat-analyzer/
 
 ### AVR high voltage programmer
 See http://shieldlist.org/mightyohm/hvrescue and http://shieldlist.org/mightyohm/hvrescue2
@@ -137,9 +159,6 @@ Device for programming AVR microcontrollers. With the rising popularity of ARM c
 
 ### Chip programmer
 USB dongle that has a usbasp or other programmer on a PCB. Has a zip socket for QFN44 (ATmega32U4). Can have other footprints zip socket footprints. Has all the components necessary to run the chip. Maybe just a zif socket with the minimum components, use external flasher. Maybe integrate a flasher, but allow for an external flasher to be used. See http://shieldlist.org/evilmadscience/isp and http://shieldlist.org/soniktech/senpai
-
-### Electrical conductivity measurement
-See http://hackaday.com/2014/11/10/accurately-measuring-electrical-conductivity/
 
 ### USB sniffer
 Passes USB through the BBB and sniff it. See http://www.elinux.org/BeagleBoard/GSoC/USBSniffer
