@@ -41,6 +41,25 @@ This alcohol gas sensor is sold by Sparkfun (https://www.sparkfun.com/products/8
 
 This sensor is used in the DrinkShield Arduino (http://shieldlist.org/gfxhax/drinkshield). Eagle and Arduino source can be found at https://code.google.com/p/drinkshield/
 
+### 433/434/315 MHz receiver
+Discrete module for radio transmitting/receiving. The transmitters are smaller than the receivers, so that may be the best module to start with.
+
+There are modules we can drop onto a breakout board, but we may be better designing our own module.
+
+See http://shieldlist.org/freetronics/433mhzreceiver and https://www.sparkfun.com/products/10534
+
+### Humidity sensor
+
+
+### Pressure sensor
+
+
+
+### Accelerometer
+Discrete module to breakout an accelerometer IC.
+
+See http://shieldlist.org/criticalvelocity/accelerometer
+
 ### Perf board
 Simple module with a perfboard pattern.
 
@@ -67,11 +86,24 @@ Module for the SPI flash used in the T400.
 Sample schematic from the T400:  
 ![image](W25Q80DV-SPI-flash-schematic.png)
 
+### Bluetooth low enerby (BLE)
+It would be great to have a BLE module as a discrete module. We'll have to do more research to determine what is out there right now. This space is moving quickly.
+
+See http://hackaday.com/2014/10/20/weightless-thing-for-oct-20-0100/ and http://shieldlist.org/mkroll/ble
+
 ### ADC (MCP3424)
 Module for one of the ADC used in the T400 or T100. The ADC channels can be connected to screw terminals. Depending on how many channels we need, we can use MCP3421 (one channel), the MCP3422 (two channels) or MCP3423/MCP3424 (four channels). The MCP3421 is used in the T100 and the MCP3424 is used in the T400.
 
 Sample schematic from the T400:  
 ![image](MCP3424-ADC-schematic.png)
+
+### Inertial measurement unit (IMU)
+A discrete module that incorporates several ICs that are typically used in an IMU.
+
+See http://shieldlist.org/criticalvelocity/imu
+
+### IR communication
+Simple discrete module that provides IR communication hardware. With the right software it can act as a TV-be-gone or general IR remote. See http://shieldlist.org/linksprite/infrared
 
 ### Single thermocouple
 Module to connect a thermocouple. This shoud be based on the T100 design. It would include the mini thermocouple connector and MCP9800 junction temperature sensor from the T400 and the MCP3421 ADC from the T100.
@@ -81,6 +113,11 @@ Module for the junction temperature sensor used in the T400. If we make the sing
 
 Sample schematic from the T400:  
 ![image](MCP9800-temperature-sensor-schematic.png)
+
+### Screw terminals
+Discrete module with srew terminals and perfboard. Connections can be routed by the hacker. Just breakout the pins to screw terminals or other type of quick connector.
+
+See http://www.adafruit.com/products/196 and http://shieldlist.org/criticalvelocity/terminalblock
 
 ### Buzzer
 A simple module with a buzzer.
@@ -105,6 +142,24 @@ This device optically detects a human pulse and is simple enough to be a discret
 ![image](heartbeat-schematic.png)
 
 See http://hackaday.com/2015/01/11/simple-and-inexpensive-heartbeat-detector/ and http://hackaday.com/2011/02/17/fingertip-heart-rate-monitor/
+
+### Analog input
+Discrete module that provides one or more analog input channels
+
+See http://shieldlist.org/appliedplatonics/analoginput
+
+### DAC
+Discrete module that outputs one or more analog signals via a digital-to-analog converter.
+
+### GPIO
+Discrete module that provides one or more general purpose I/O ports. These ports may be hardened against input voltage. We can achieve having more than one I/O channel per module by using an expander IC.
+
+See http://shieldlist.org/futuraelettronica/io and http://www.digitalsmarties.net/products/expander-plug
+
+### Current-based sensors
+Discrete module to interface with one or more sensors that output a current-based signal between 4 mA and 20 mA. These types of sensors are typically found in industrial applications.
+
+See http://shieldlist.org/mci-electronics/20ma
 
 ## Functional devices
 ===
@@ -136,10 +191,62 @@ Schematic from the pHduino:
 Upon further investigation, sparkyswidgets.com makes a pH interface (https://www.sparkyswidgets.com/product/miniph/) that seems pretty small. Maybe we can use that and make a discrete module.
 ![image](mini-pH-interface-pcb.png)
 
+### USB power meter
+A device that will display and log the voltage, current, power, and energy used by a USB device. Has a USB-A and USB-B connector. The data and ground lines are passed directly between the USB connectors the +5V passes through a measurment circuit to measure current and voltage from which power and energy can be derived.
+
+See http://friedcircuits.us/docs/usb-tester-oled-backpack/
+
 ### Mitutoyo SPC Interface
 Redesign of Zach's Mitutoyo-SPC-Interface into the T400 body. This would work best if we can make it a breakout board for the T400D development platform.
 
 All the interfaces can share the same GND, VCC, and CLK. Each interface requires an independent REQ and DATA. We should have enough free pins if we do four channels.
+
+### Coffee roasting controller
+A device for roasting coffee. We should make this as compatible as possible with the TC4 device. The guy isn't releasing the Eagle file, only PDFs.
+
+The TC4 shield plus Arduino is pretty much a T400 with some extra i/o. I think we can fit the design within the full module area.
+
+TC4 photo: 
+![image](tc4-shield.png)
+
+See http://shieldlist.org/homeroasters/tc4
+
+### CAN bus interface
+A device that can interface with the automotive CAN bus. With the right software it can act as an OBD-II trouble code reader. Maybe also a display for automotive data. Use a DB9 connector like the Sparkfun shield for use with a OBD-II interface cable. If it weren't for the phisical size, we could probably get this on a discrete module.
+
+See http://shieldlist.org/fazjaxton/can, https://www.sparkfun.com/products/10039, and http://shieldlist.org/skpang/canbus.
+
+### Video overlay
+Device that will overlay text into a video. Input RCA video and output RCA video with overlay. Fun to play with, but probably not terribly userful.
+
+See http://lowvoltagelabs.com/products/videooverlayshield/
+
+### GPIB interface
+Module to interface with GPIB devices. Maybe this would be good as a standalone reader for a particular device. With an LCD the T400D can act as a remote display for data. It could be the head for a headless GPIB device.
+
+This would be good for interfacing with old lab instruments. I think we would be better off making a GPIB to USB interface. It's already been done before, so it ay not be a good product for us. If we make a functional device module, we can talk to GPIB devices with the T400D and also interface over USB.
+
+See http://dev.hackaday.com/?p=73119 and http://scasagrande.blogspot.ca/2012/04/gpibusb-for-sale.html
+
+### Power supply
+Digital power supply. It should probably take power directly from VBUS and boost it up to 5V even if the T400D is plugged into USB power. The output voltage should be programmable through the LCD and buttons. The current, voltage, power, and energy should be logged to the SD card. The device should be able to operate on battery power. It would be cool if we can output negative voltage too.
+
+See http://shieldlist.org/cutedigi/negvoltage (Supplies negative voltage)
+
+### Serial port
+Nothing special. Just a discrete module that adds a serial port. Maybe a good terminal for extracting data from a serial device.
+
+A DB9 connector is approximately 31 mm wide while our modules are 22.86 mm wide. A D-sub9 connector will not work for this. We could add two serial ports with some level shifting and maybe even RS485 chips and call it a serial port functional device.
+
+See http://shieldlist.org/cutedigi/rs232 and http://shieldlist.org/linksprite/rs485.
+
+### Random number generator
+A module that generates random numbers. From the project linked below I'm pretty sure we can make this module sized.
+
+- http://hackaday.com/2014/10/31/dual-mode-avalanche-and-rf-random-number-generator/
+- http://ubld.it/products/truerng-hardware-random-number-generator/
+- http://www.entropykey.co.uk/
+- http://en.wikipedia.org/wiki/Comparison_of_hardware_random_number_generators
 
 ===
 ===
@@ -160,32 +267,11 @@ Device for programming AVR microcontrollers. With the rising popularity of ARM c
 ### Chip programmer
 USB dongle that has a usbasp or other programmer on a PCB. Has a zip socket for QFN44 (ATmega32U4). Can have other footprints zip socket footprints. Has all the components necessary to run the chip. Maybe just a zif socket with the minimum components, use external flasher. Maybe integrate a flasher, but allow for an external flasher to be used. See http://shieldlist.org/evilmadscience/isp and http://shieldlist.org/soniktech/senpai
 
-### USB sniffer
-Passes USB through the BBB and sniff it. See http://www.elinux.org/BeagleBoard/GSoC/USBSniffer
-
-### Multimeter wireless remote display
-See http://hackaday.com/2015/02/01/give-your-multimeter-a-wireless-remote-display/
-
-### Serial port
-Adds a serial port. Maybe a good terminal for extracting data from a serial device.
-
-- http://shieldlist.org/cutedigi/rs232
-- http://shieldlist.org/linksprite/rs485
-
-### Power supply
-See http://shieldlist.org/cutedigi/negvoltage (Supplies negative voltage)
-
 ### Network analyzer
 See http://hackaday.com/2015/02/09/altoids-tin-network-analyzer/
 
-### Oscilloscope
-See http://www.eevblog.com/2014/10/22/eevblog-675-how-to-reverse-engineer-a-rigol-ds1054z/
-
 ### Spectrum analyzer
 See http://hackaday.com/2014/09/16/thp-quarterfinalist-3ghz-spectrum-analyzer/ and http://shieldlist.org/bliptronics/spectrum
-
-### GPIB interface
-Module to interface with GPIB devices. Maybe this would be good as a standalone reader for a particular device. With an LCD the T400D can act as a remote display for data. It could be the head for a headless GPIB device.
 
 ### Motor
 Connect stepper motors, DC motors, and servos.
@@ -230,9 +316,6 @@ A device to measuring wind speed.
 - Wind direction anemometer http://www.thingiverse.com/thing:245025
 - wind gauge http://www.thingiverse.com/thing:229975
 
-### Bee hive monitor
-A device to measure temperature and humidity of bee hive. May include an event counter to monitor bee entry and exit.
-
 ### Weather station
 - Stevenson screen for weather station http://www.thingiverse.com/thing:158039
 - Weather station http://www.thingiverse.com/thing:144665
@@ -252,12 +335,6 @@ See http://www.thingiverse.com/thing:13383
 - http://hackaday.com/2012/10/01/brewpi-is-a-raspberry-pi-in-charge-of-beer-fermentation/
 - http://hackaday.com/2014/10/11/keep-an-eye-on-your-fermenting-beer-with-brewmonitor/
 
-### Coffee roasting controller
-See http://shieldlist.org/homeroasters/tc4
-
-### Bluetooth low enerby (BLE)
-See http://hackaday.com/2014/10/20/weightless-thing-for-oct-20-0100/ and http://shieldlist.org/mkroll/ble
-
 ### Geiger counter
 See http://hackaday.com/2014/10/25/use-a-cheap-pin-diode-as-a-geiger-counter/ and http://shieldlist.org/libelium/radiation
 
@@ -266,9 +343,6 @@ Camera and dolly control
 
 - http://shieldlist.org/dreamingrobots/camera-axe-5 (camera controller)
 - http://shieldlist.org/dynamicperception/dolly (dolly controller)
-
-### Video overlay
-See http://shieldlist.org/lowvoltagelabs/videooverlay
 
 ### TV output
 See http://shieldlist.org/batsocks/tellymate
@@ -285,12 +359,6 @@ See http://hackaday.com/2015/01/26/sonar-built-from-piezo-and-microphone/
 ### Inclinometer
 See http://hackaday.com/2014/12/16/create-an-inclinometer-using-a-raspberry-pi/
 
-### Random number generator
-- http://hackaday.com/2014/10/31/dual-mode-avalanche-and-rf-random-number-generator/
-- http://ubld.it/products/truerng-hardware-random-number-generator/
-- http://www.entropykey.co.uk/
-- http://en.wikipedia.org/wiki/Comparison_of_hardware_random_number_generators
-
 ### Spectrometer
 See http://www.thingiverse.com/thing:148270 and http://myspectral.com/
 
@@ -299,12 +367,6 @@ See http://hackaday.com/2014/12/22/green-sweep-for-your-ultrasonic-rangefinder/
 
 ### Colorimeter
 See http://www.appropedia.org/Open-source_colorimeter
-
-### IR communication
-Act as a TV-be-gone or general IR remote. See http://shieldlist.org/linksprite/infrared
-
-### 433 MHz receiver
-See http://shieldlist.org/freetronics/433mhzreceiver
 
 ### GPS/GSM/GPRS
 Log GPS.
@@ -345,21 +407,6 @@ See http://hackaday.com/2014/11/12/2-fm-transmitter-for-rasberry-pi/ and http://
 ### Software defined radio
 See http://hackaday.com/2015/01/14/portablesdr-makes-it-to-kickstarter/ and http://hackaday.com/2015/01/30/casing-up-the-teensy-sdr/ and http://hackaday.com/2014/11/19/rtl-sdr-as-a-spectrum-analyzer/ and http://hackaday.com/2015/02/09/portablesdr-needs-a-cinderella-story-to-finish-its-kickstarter/
 
-### Analog input
-See http://shieldlist.org/appliedplatonics/analoginput
-
-### CAN bus interface
-
-- http://shieldlist.org/fazjaxton/can
-- http://shieldlist.org/sparkfun/can-bus
-- http://shieldlist.org/skpang/canbus
-
-### GPIO
-See http://shieldlist.org/futuraelettronica/io
-
-### Current-based sensors
-See http://shieldlist.org/mci-electronics/20ma
-
 ### Datalogger
 A general purpose datalogger. Includes an SD card, RTC, and prototyping perfboard area.
 
@@ -371,28 +418,3 @@ A general purpose datalogger. Includes an SD card, RTC, and prototyping perfboar
 - http://shieldlist.org/nuelectronics/datalog-io
 - http://shieldlist.org/snootlab/memoire
 - http://shieldlist.org/seeedstudio/stalker
-
-### Screw terminals
-Just breakout the pins to screw terminals or other type of quick connector.
-
-- http://www.adafruit.com/products/196
-- http://shieldlist.org/criticalvelocity/terminalblock
-
-### Low noise datalogger
-See http://hackaday.com/2015/01/21/sigzig-data-loggers-ditch-the-noise-while-pimping-the-case/
-
-### Inertial measurement unit (IMU)
-See http://shieldlist.org/criticalvelocity/imu
-
-### Accelerometer
-See http://shieldlist.org/criticalvelocity/accelerometer
-
-### USB host
-
-- http://shieldlist.org/circuitsathome/usbhost
-- http://shieldlist.org/circuitsathome/usbhost-v2
-- http://shieldlist.org/sparkfun/usbhost
-
-### Barcode reader
-See http://www.adafruit.com/product/1202
-Device that
