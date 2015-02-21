@@ -34,7 +34,7 @@ Discrete modules are simple boards. Each discrete module fits in a single slot o
 Each module may have one or more ICs as long as they are intimately related. For example, a thermocouple module may have an ADC to measure voltage from the thermocouple and a seperate IC to measure junction temperature.
 
 Prototype of the T400D development board with three perf board modules installed:  
-![image](./t400d-pcb.png =300x)
+![image](t400d-pcb.png =300x)
 
 ### Alcohol gas sensor
 This alcohol gas sensor is sold by Sparkfun (https://www.sparkfun.com/products/8880). From Sparkfun's description: "This alcohol sensor is suitable for detecting alcohol concentration on your breath... It has a high sensitivity and fast response time. Sensor provides an analog resistive output based on alcohol concentration. The drive circuit is very simple, all it needs is one resistor. A simple interface could be a 0-3.3V ADC."
@@ -45,19 +45,19 @@ This sensor is used in the DrinkShield Arduino (http://shieldlist.org/gfxhax/dri
 Module for the RTC used in the T400. The RTC module should also include a backkup battery.
 
 Sample schematic from the T400:  
-![image](./DS3231-RTC-schematic.png =300x)
+![image](DS3231-RTC-schematic.png =300x)
 
 ### SPI flash (W25Q80BV)
 Module for the SPI flash used in the T400.
 
 Sample schematic from the T400:  
-![image](./W25Q80DV-SPI-flash-schematic.png =300x)
+![image](W25Q80DV-SPI-flash-schematic.png =300x)
 
 ### ADC (MCP3424)
 Module for one of the ADC used in the T400 or T100. The ADC channels can be connected to screw terminals. Depending on how many channels we need, we can use MCP3421 (one channel), the MCP3422 (two channels) or MCP3423/MCP3424 (four channels). The MCP3421 is used in the T100 and the MCP3424 is used in the T400.
 
 Sample schematic from the T400:  
-![image](./MCP3424-ADC-schematic.png =300x)
+![image](MCP3424-ADC-schematic.png =300x)
 
 ### Single thermocouple
 Module to connect a thermocouple. This shoud be based on the T100 design. It would include the mini thermocouple connector and MCP9800 junction temperature sensor from the T400 and the MCP3421 ADC from the T100.
@@ -66,7 +66,7 @@ Module to connect a thermocouple. This shoud be based on the T100 design. It wou
 Module for the junction temperature sensor used in the T400. If we make the single thermocouple module, this module would be redundant and we should not make it.
 
 Sample schematic from the T400:  
-![image](./MCP9800-temperature-sensor-schematic.png =300x)
+![image](MCP9800-temperature-sensor-schematic.png =300x)
 
 ### Buzzer
 A simple module with a buzzer.
@@ -77,7 +77,7 @@ A discrete module for controlling old Nokia phones. The phone would act as a GSM
 This would be a very simple PCB. The kit would have to include a cable.
 
 From [Ilias Giechaskiel's project]()https://ilias.giechaskiel.com/posts/arduino_sms/index.html):
-![image](./nokia-bridge.png =300x)
+![image](nokia-bridge.png =300x)
 
 See http://hackaday.com/2015/01/01/controlling-nokia-phones-with-arduino/
 
@@ -85,7 +85,7 @@ See http://hackaday.com/2015/01/01/controlling-nokia-phones-with-arduino/
 This device optically detects a human pulse and is simple enough to be a discrete module.
 
 [Arduino-based pulse sensor](http://hackaday.io/project/3378-diy-arduino-pulse-sensor):  
-![image](./heartbeat-schematic.png =300x)
+![image](heartbeat-schematic.png =300x)
 
 See http://hackaday.com/2015/01/11/simple-and-inexpensive-heartbeat-detector/ and http://hackaday.com/2011/02/17/fingertip-heart-rate-monitor/
 
@@ -107,7 +107,7 @@ The circuitry to measure pH is too complex for a single discrete module, so we w
 See the pHduino https://code.google.com/p/phduino/
 
 Schematic from the pHduino:  
-![image](./phduino-schematic.png =300x)
+![image](phduino-schematic.png =300x)
 
 ### Mitutoyo SPC Interface
 Redesign of Zach's Mitutoyo-SPC-Interface into the T400 body. This would work best if we can make it a breakout board for the T400D development platform.
