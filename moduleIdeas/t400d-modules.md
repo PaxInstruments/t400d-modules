@@ -33,6 +33,19 @@ Discrete modules are simple boards. Each discrete module fits in a single slot o
 
 Each module may have one or more ICs as long as they are intimately related. For example, a thermocouple module may have an ADC to measure voltage from the thermocouple and a seperate IC to measure junction temperature.
 
+A good discrete module candidate will meet the following criteria.
+
+- All components will fit onto a single discrete module board
+- All components that do not need to be outside the enclosure can be housed within the enclosure
+- The enclosure can be properly assembled with the module in place
+- The module does not interfere with neighboring modules, the main PCB, or the enclosure
+- The module can be operated at 3.3V or with a boot converter on the module operating with a 3.3V input
+- The module can have anu number of i2c devices
+- The module can require up to one of either a SPI device, analog output to MCU, or digital output to MCU
+- The module requires no more than one SPI device
+- There exists Arduino libraries for all module ICs
+- There exists Eagle files for all IC components
+
 Prototype of the T400D development board with three perf board modules installed:  
 ![image](t400d-pcb.png)
 
@@ -112,6 +125,11 @@ Module for the SPI flash used in the T400.
 
 Sample schematic from the T400:  
 ![image](W25Q80DV-SPI-flash-schematic.png)
+
+### PWM driver
+Discrete module that gives one or more PWM outputs that can control servo motors, LED's, or other devices.
+
+See http://www.adafruit.com/product/815
 
 ### Bluetooth low enerby (BLE)
 It would be great to have a BLE module as a discrete module. We'll have to do more research to determine what is out there right now. This space is moving quickly.
@@ -289,7 +307,7 @@ A device for roasting coffee. We should make this as compatible as possible with
 
 The TC4 shield plus Arduino is pretty much a T400 with some extra i/o. I think we can fit the design within the full module area.
 
-TC4 photo: 
+TC4 photo:  
 ![image](tc4-shield.png)
 
 See http://shieldlist.org/homeroasters/tc4
@@ -326,10 +344,7 @@ See http://shieldlist.org/cutedigi/rs232 and http://shieldlist.org/linksprite/rs
 ### Random number generator
 A module that generates random numbers. From the project linked below I'm pretty sure we can make this module sized.
 
-- http://hackaday.com/2014/10/31/dual-mode-avalanche-and-rf-random-number-generator/
-- http://ubld.it/products/truerng-hardware-random-number-generator/
-- http://www.entropykey.co.uk/
-- http://en.wikipedia.org/wiki/Comparison_of_hardware_random_number_generators
+See http://hackaday.com/2014/10/31/dual-mode-avalanche-and-rf-random-number-generator/, http://ubld.it/products/truerng-hardware-random-number-generator/, http://www.entropykey.co.uk/, http://en.wikipedia.org/wiki/Comparison_of_hardware_random_number_generators
 
 ### Ultrasonic rangefinder
 Functional device that uses the prolific ultrasonic range finding circuit.
