@@ -50,6 +50,8 @@ Prototype of the T400D development board with three perf board modules installed
 ![image](t400d-pcb.png)
 
 ### Alcohol gas sensor
+__Candidacy:__ good
+
 This alcohol gas sensor is sold by Sparkfun. From Sparkfun's description: "This alcohol sensor is suitable for detecting alcohol concentration on your breath... It has a high sensitivity and fast response time. Sensor provides an analog resistive output based on alcohol concentration. The drive circuit is very simple, all it needs is one resistor. A simple interface could be a 0-3.3V ADC."
 
 This would probably require a ninety degree PCB on the top panel.
@@ -60,6 +62,8 @@ Simple schematic for similar snesor:
 See https://www.sparkfun.com/products/8880, http://shieldlist.org/gfxhax/drinkshield and https://code.google.com/p/drinkshield/
 
 ### Smoke detector
+__Candidacy:__ good
+
 Discrete module to interface with a smoke detector sensor.
 
 Simple schematic for similar snesor:  
@@ -67,7 +71,12 @@ Simple schematic for similar snesor:
 
 See http://shieldlist.org/cutedigi/smoke
 
+### Endocer
+Discrete module that detects rotary or other encoding.
+
 ### 433/434/315 MHz receiver
+__Candidacy:__ poor
+
 Discrete module for radio transmitting/receiving. The transmitters are smaller than the receivers, so that may be the best module to start with.
 
 There are modules we can drop onto a breakout board, but we may be better designing our own module.
@@ -78,6 +87,8 @@ There are modules we can drop onto a breakout board, but we may be better design
 See http://shieldlist.org/freetronics/433mhzreceiver and https://www.sparkfun.com/products/10534
 
 ### Humidity sensor
+__Candidacy:__ good
+
 Discrete module to interface with a humidity sensor.
 
 HTU21D breakout from Sparkfun:  
@@ -86,6 +97,8 @@ HTU21D breakout from Sparkfun:
 See https://www.sparkfun.com/products/8257 and https://www.sparkfun.com/products/12064
 
 ### Pressure sensor
+__Candidacy:__ good
+
 Discrete module to interface with a pressure sensor. Can connect via cable to another PCB with the pressure sensor. Then the user can mount it wherever they like.
 
 MPL3115A2 from Sparkfun:  
@@ -101,12 +114,16 @@ Discrete module to breakout an accelerometer IC. The IC may include a gyroscope.
 See http://shieldlist.org/criticalvelocity/accelerometer, https://www.sparkfun.com/products/9836, and https://www.sparkfun.com/products/11028
 
 ### Perf board
+__Candidacy:__ good
+
 Simple module with a perfboard pattern.
 
 Three perfboard modules installed in a prototype of the T400D:  
 ![image](perfboard-pcb.png)
 
 ### Surface mount breakout
+__Candidacy:__ good
+
 We can make breakout modules for various surface mount footprints. The remaining area can be a series of SMT pads such that passive components can be mounted to the board and traces made by dridging with solder.
 
 The split vias along the edges can be used to connect from one side to another.
@@ -115,12 +132,16 @@ Here is what the patter can look like:
 ![image](smd-proto-pattern.png)
 
 ### Real time clock
+__Candidacy:__ good
+
 Module for the RTC used in the T400. The RTC module should also include a backkup battery.
 
 Sample schematic from the T400:  
 ![image](DS3231-RTC-schematic.png)
 
 ### SPI flash (W25Q80BV)
+__Candidacy:__ good
+
 Module for the SPI flash used in the T400.
 
 Sample schematic from the T400:  
@@ -137,6 +158,8 @@ It would be great to have a BLE module as a discrete module. We'll have to do mo
 See http://hackaday.com/2014/10/20/weightless-thing-for-oct-20-0100/ and http://shieldlist.org/mkroll/ble
 
 ### ADC (MCP3424)
+__Candidacy:__ good
+
 Module for one of the ADC used in the T400 or T100. The ADC channels can be connected to screw terminals. Depending on how many channels we need, we can use MCP3421 (one channel), the MCP3422 (two channels) or MCP3423/MCP3424 (four channels). The MCP3421 is used in the T100 and the MCP3424 is used in the T400.
 
 Sample schematic from the T400:  
@@ -156,9 +179,13 @@ See https://www.sparkfun.com/products/12705
 Simple discrete module that provides IR communication hardware. With the right software it can act as a TV-be-gone or general IR remote. See http://shieldlist.org/linksprite/infrared
 
 ### Single thermocouple
+__Candidacy:__ sufficient
+
 Module to connect a thermocouple. This shoud be based on the T100 design. It would include the mini thermocouple connector and MCP9800 junction temperature sensor from the T400 and the MCP3421 ADC from the T100.
 
 ### Temperature sensor (MCP9800)
+__Candidacy:__ good
+
 Module for the junction temperature sensor used in the T400. If we make the single thermocouple module, this module would be redundant and we should not make it.
 
 Sample schematic from the T400:  
@@ -170,6 +197,8 @@ Discrete module with srew terminals and perfboard. Connections can be routed by 
 See http://www.adafruit.com/products/196 and http://shieldlist.org/criticalvelocity/terminalblock
 
 ### Buzzer
+__Candidacy:__ good
+
 A simple module with a buzzer.
 
 We can get fancy and run the buzzer via the 3.3V line.
@@ -383,10 +412,24 @@ Device for timelapse and videography. Controls a camera dolly. Includes a camera
 
 See http://shieldlist.org/dynamicperception/dolly
 
+## Inspiration resources
+===
+There are many companies that make sensors and datalogging kits for educaiton and professional labs. These can be good sources of inspiration when determining what sensors may be interesting to users.
 
+### EDU-LAB
+[http://www.edulab.com/](http://www.edulab.com/)
 
+This UK-based company sells a series of sensors and lab instruments primarily for educational use.
 
+### Pasco
+[http://www.pasco.com/](http://www.pasco.com/)
 
+This company makes sensors and datalogging equimpent to educaiton.
+
+### Vernier
+[http://www.vernier.com/](http://www.vernier.com/)
+
+This company makes sensors and datalogging equimpent to educaiton.
 
 
 
