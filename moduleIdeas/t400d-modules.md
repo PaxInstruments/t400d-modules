@@ -37,28 +37,55 @@ Prototype of the T400D development board with three perf board modules installed
 ![image](t400d-pcb.png)
 
 ### Alcohol gas sensor
-This alcohol gas sensor is sold by Sparkfun (https://www.sparkfun.com/products/8880). From Sparkfun's description: "This alcohol sensor is suitable for detecting alcohol concentration on your breath... It has a high sensitivity and fast response time. Sensor provides an analog resistive output based on alcohol concentration. The drive circuit is very simple, all it needs is one resistor. A simple interface could be a 0-3.3V ADC."
+This alcohol gas sensor is sold by Sparkfun. From Sparkfun's description: "This alcohol sensor is suitable for detecting alcohol concentration on your breath... It has a high sensitivity and fast response time. Sensor provides an analog resistive output based on alcohol concentration. The drive circuit is very simple, all it needs is one resistor. A simple interface could be a 0-3.3V ADC."
 
-This sensor is used in the DrinkShield Arduino (http://shieldlist.org/gfxhax/drinkshield). Eagle and Arduino source can be found at https://code.google.com/p/drinkshield/
+This would probably require a ninety degree PCB on the top panel.
+
+Simple schematic for similar snesor:  
+![image](mq3-schematic.png)
+
+See https://www.sparkfun.com/products/8880, http://shieldlist.org/gfxhax/drinkshield and https://code.google.com/p/drinkshield/
+
+### Smoke detector
+Discrete module to interface with a smoke detector sensor.
+
+Simple schematic for similar snesor:  
+![image](mq3-schematic.png)
+
+See http://shieldlist.org/cutedigi/smoke
 
 ### 433/434/315 MHz receiver
 Discrete module for radio transmitting/receiving. The transmitters are smaller than the receivers, so that may be the best module to start with.
 
 There are modules we can drop onto a breakout board, but we may be better designing our own module.
 
+434 MHz transmitter form Sparkfun:  
+![image](434mhz-transmitter-photo.png)
+
 See http://shieldlist.org/freetronics/433mhzreceiver and https://www.sparkfun.com/products/10534
 
 ### Humidity sensor
+Discrete module to interface with a humidity sensor.
 
+HTU21D breakout from Sparkfun:  
+![image](humidity-schematic.png)
+
+See https://www.sparkfun.com/products/8257 and https://www.sparkfun.com/products/12064
 
 ### Pressure sensor
+Discrete module to interface with a pressure sensor. Can connect via cable to another PCB with the pressure sensor. Then the user can mount it wherever they like.
 
+MPL3115A2 from Sparkfun:  
+![image](MPL3115A2-schematic.png)
 
+See https://www.sparkfun.com/products/8257
 
 ### Accelerometer
-Discrete module to breakout an accelerometer IC.
+Discrete module to breakout an accelerometer IC. The IC may include a gyroscope.
 
-See http://shieldlist.org/criticalvelocity/accelerometer
+![image](Accelerometer-and-Gyro-Breakout-MPU-6050.png)
+
+See http://shieldlist.org/criticalvelocity/accelerometer, https://www.sparkfun.com/products/9836, and https://www.sparkfun.com/products/11028
 
 ### Perf board
 Simple module with a perfboard pattern.
@@ -101,6 +128,11 @@ Sample schematic from the T400:
 A discrete module that incorporates several ICs that are typically used in an IMU.
 
 See http://shieldlist.org/criticalvelocity/imu
+
+### UV Radiometer
+Module for measuring UV light. This can be be a sensor on the T400D device or a module that interfaces with another PCB via cable, so the sensor can be mounted where the user likes.
+
+See https://www.sparkfun.com/products/12705
 
 ### IR communication
 Simple discrete module that provides IR communication hardware. With the right software it can act as a TV-be-gone or general IR remote. See http://shieldlist.org/linksprite/infrared
@@ -160,6 +192,57 @@ See http://shieldlist.org/futuraelettronica/io and http://www.digitalsmarties.ne
 Discrete module to interface with one or more sensors that output a current-based signal between 4 mA and 20 mA. These types of sensors are typically found in industrial applications.
 
 See http://shieldlist.org/mci-electronics/20ma
+
+### Camera trigger
+Module to trigger a camera.
+
+### Light sensor
+Module that can detect light. It should be fast enough such that it can be used in a camera triggering device.
+
+### Sound sensor
+Module that can detect sound. It should be fast enough such that it can be used in a camera triggering device.
+
+### Current sensor
+Module to interface with AC current sensors.
+
+See http://shieldlist.org/galileo7/wattmeter and http://shieldlist.org/seg/segmeter
+
+### TV output
+Module to output to a black and white television in NTSC or PAL formats.
+
+See http://shieldlist.org/batsocks/tellymate
+
+### GPS
+Discrete module for a GPS receiver.
+
+See http://www.adafruit.com/products/98, http://www.adafruit.com/products/1272, http://shieldlist.org/dexter/gps, http://shieldlist.org/libelium/gps, http://shieldlist.org/sparkfun/gps, http://shieldlist.org/liquidware/geoshield, http://shieldlist.org/mitek/gsm-gps, http://shieldlist.org/dss-circuits/i2c-gps, http://shieldlist.org/antrax/gsm-gprs-gps, http://shieldlist.org/cutedigi/gps-sd
+
+### GSM
+Discrete module for connecting to a SIM card and GSM network.
+
+See http://shieldlist.org/seeedstudio/gprs, http://shieldlist.org/sparkfun/cellular, http://shieldlist.org/mci-electronics/gm862, http://shieldlist.org/mitek/gsm-gps, http://shieldlist.org/openelectronics/gsm900, http://shieldlist.org/futuraelettronica/gsm, http://shieldlist.org/geekonfire/gprs, http://shieldlist.org/hwkitchen/gsmplayground, http://shieldlist.org/libelium/gprs-quadband, http://shieldlist.org/libelium/gprs-dualband, http://shieldlist.org/antrax/gsm-gprs-gps, http://shieldlist.org/cutedigi/gprs-gsm
+
+### Servo
+Module for connecting to one or more servos. Each module port has a single chip select pin, so we would need a multiplexing device if we want ot connect more than one servo.
+
+See http://www.adafruit.com/products/1411
+
+### Stepper/DC motor
+Module to interface with a stepper motor. Not sure what connector type. Maybe have screw terminals for connecting bare wires.
+
+See http://www.adafruit.com/products/81, http://www.adafruit.com/products/1438, http://shieldlist.org/arduino/motor, http://shieldlist.org/andreconcalves/hbridge, http://shieldlist.org/emartee/motor-drive, http://shieldlist.org/dfrobot/1a-motor, http://shieldlist.org/dfrobot/2a-motor, http://shieldlist.org/nkc/motor, http://shieldlist.org/sparkfun/ardumoto, http://shieldlist.org/sparkfun/monster-moto, http://shieldlist.org/sparkfun/motor
+
+### FM receiver
+Module to receive FM radio signals. I think we can get a small basic module.
+
+- http://shieldlist.org/argent/radio
+- http://shieldlist.org/sparkfun/am-fm-receiver
+- http://shieldlist.org/skpang/easyradio
+
+### FM transmitter
+Module to send FM radio signals. I think we can get a small basic module.
+
+See http://hackaday.com/2014/11/12/2-fm-transmitter-for-rasberry-pi/ and http://shieldlist.org/curious-inventor/fm-radio
 
 ## Functional devices
 ===
@@ -231,7 +314,7 @@ See http://dev.hackaday.com/?p=73119 and http://scasagrande.blogspot.ca/2012/04/
 ### Power supply
 Digital power supply. It should probably take power directly from VBUS and boost it up to 5V even if the T400D is plugged into USB power. The output voltage should be programmable through the LCD and buttons. The current, voltage, power, and energy should be logged to the SD card. The device should be able to operate on battery power. It would be cool if we can output negative voltage too.
 
-See http://shieldlist.org/cutedigi/negvoltage (Supplies negative voltage)
+See http://shieldlist.org/cutedigi/negvoltage
 
 ### Serial port
 Nothing special. Just a discrete module that adds a serial port. Maybe a good terminal for extracting data from a serial device.
@@ -248,173 +331,47 @@ A module that generates random numbers. From the project linked below I'm pretty
 - http://www.entropykey.co.uk/
 - http://en.wikipedia.org/wiki/Comparison_of_hardware_random_number_generators
 
-===
-===
-===
-===
+### Ultrasonic rangefinder
+Functional device that uses the prolific ultrasonic range finding circuit.
 
-### AVR high voltage programmer
-See http://shieldlist.org/mightyohm/hvrescue and http://shieldlist.org/mightyohm/hvrescue2
+See http://hackaday.com/2014/12/22/green-sweep-for-your-ultrasonic-rangefinder/
 
-### USB asp programmer
-Device for programming AVR microcontrollers. With the rising popularity of ARM chips, this is probably not the best product to make.
+### Standalone AVR  programmer
+A device that can program AVR boards via an ICSP header without being connected to a computer. The user selects a hex file from the SD card via the LCD/keypad interface. Selectable between 3.3V and 5V.
 
-- http://www.fischl.de/usbasp/
-- http://hackaday.com/2014/11/02/inexpensive-avr-programmer-made-from-five-components/
-- http://www.anthonyvh.com/2013/04/24/programming-pen-usb-interface/
-- http://www.embedded-creations.com/projects/tiny-avr-jtag-programmer/
+The Easy Auto Programmer is the most promising design, but I cannot get the source code to compile.
 
-### Chip programmer
-USB dongle that has a usbasp or other programmer on a PCB. Has a zip socket for QFN44 (ATmega32U4). Can have other footprints zip socket footprints. Has all the components necessary to run the chip. Maybe just a zif socket with the minimum components, use external flasher. Maybe integrate a flasher, but allow for an external flasher to be used. See http://shieldlist.org/evilmadscience/isp and http://shieldlist.org/soniktech/senpai
+See http://www.solderlab.de/index.php/hardware/auto-programmer, http://mdiy.pl/uprog-maly-szybki-przenosny-programator-avr-z-sd/?lang=en, http://hackaday.com/2014/04/11/ispnub-a-stand-alone-avr-in-system-programmer-module/, http://forum.arduino.cc/index.php?topic=125248.0
 
 ### Network analyzer
+A device typically used for measuring RF filters. We can probably fit this in the module area.
+
 See http://hackaday.com/2015/02/09/altoids-tin-network-analyzer/
 
 ### Spectrum analyzer
-See http://hackaday.com/2014/09/16/thp-quarterfinalist-3ghz-spectrum-analyzer/ and http://shieldlist.org/bliptronics/spectrum
+Device for analyzing RF frequencies. We may be able to make a simple one.
 
-### Motor
-Connect stepper motors, DC motors, and servos.
+See http://hackaday.com/2014/09/16/thp-quarterfinalist-3ghz-spectrum-analyzer/, and http://shieldlist.org/bliptronics/spectrum
 
-- http://www.adafruit.com/products/81
-- http://www.adafruit.com/products/1438
-- http://shieldlist.org/arduino/motor
-- http://shieldlist.org/andreconcalves/hbridge
-- http://shieldlist.org/emartee/motor-drive
-- http://shieldlist.org/dfrobot/1a-motor
-- http://shieldlist.org/dfrobot/2a-motor
-- http://shieldlist.org/nkc/motor
-- http://shieldlist.org/sparkfun/ardumoto
-- http://shieldlist.org/sparkfun/monster-moto
-- http://shieldlist.org/sparkfun/motor
+### Fermentation monitor
+Device for monitoring and controlling a fermentation process.
 
-### Servo tester
-Connect a bunch of servos to the device. Add two screw terminals or a barrel connector to power the extra servos. Use a multiplexer to run many servos or just the available pins of the development device. See http://www.adafruit.com/products/1411
-
-### Watt meter
-See http://shieldlist.org/galileo7/wattmeter
-
-### Electricity usage monitor
-Uses Google spreadsheets. See http://hackaday.com/2015/01/15/electricity-usage-monitor-is-linked-to-google-spreadsheets/
-
-### Smart energy sensors
-See http://shieldlist.org/seg/segmeter
-
-### Humidity and pressure datalogger
-Device for measuring pressure and humidity.
-
-### Water quality tester
-See http://hackaday.com/2014/10/17/open-source-water-quality-tester/
-
-### UV Radiometer
-See https://www.sparkfun.com/products/12705
-
-### Wind gauge
-A device to measuring wind speed.
-
-- Mini- wind gauge http://www.thingiverse.com/thing:241608
-- Wind direction anemometer http://www.thingiverse.com/thing:245025
-- wind gauge http://www.thingiverse.com/thing:229975
-
-### Weather station
-- Stevenson screen for weather station http://www.thingiverse.com/thing:158039
-- Weather station http://www.thingiverse.com/thing:144665
-- W ented and shaded box http://www.thingiverse.com/thing:146132
-- Stevenson screen for wireless meteorological sensor http://www.thingiverse.com/thing:83969
-
-### Outdoor air pressure sensor
-See http://www.thingiverse.com/thing:193569
-
-### Water softener level detector
-See http://hackaday.com/2014/10/29/water-softener-level-detector-keeps-you-out-of-trouble-with-wife/
-
-### Rain meter
-See http://www.thingiverse.com/thing:13383
-
-### Brew monitor
-- http://hackaday.com/2012/10/01/brewpi-is-a-raspberry-pi-in-charge-of-beer-fermentation/
-- http://hackaday.com/2014/10/11/keep-an-eye-on-your-fermenting-beer-with-brewmonitor/
-
-### Geiger counter
-See http://hackaday.com/2014/10/25/use-a-cheap-pin-diode-as-a-geiger-counter/ and http://shieldlist.org/libelium/radiation
-
-### Dolly controller
-Camera and dolly control
-
-- http://shieldlist.org/dreamingrobots/camera-axe-5 (camera controller)
-- http://shieldlist.org/dynamicperception/dolly (dolly controller)
-
-### TV output
-See http://shieldlist.org/batsocks/tellymate
+See  http://hackaday.com/2012/10/01/brewpi-is-a-raspberry-pi-in-charge-of-beer-fermentation/ and http://hackaday.com/2014/10/11/keep-an-eye-on-your-fermenting-beer-with-brewmonitor/
 
 ### Intervalometer
-See http://hackaday.com/2014/11/16/100-diy-intervalometer-is-100-awesome/
+Device that uses a timer, light sensor or sound  sensor to trigger a camera.
 
-### Smoke detector
-See http://shieldlist.org/cutedigi/smoke
+See http://hackaday.com/2014/11/16/100-diy-intervalometer-is-100-awesome/ and http://shieldlist.org/dreamingrobots/camera-axe-5
 
-### Sonar
-See http://hackaday.com/2015/01/26/sonar-built-from-piezo-and-microphone/
+### Camera dolly controller
+Device for timelapse and videography. Controls a camera dolly. Includes a camera trigger motor controller, inputs for encoders and endstops.
 
-### Inclinometer
-See http://hackaday.com/2014/12/16/create-an-inclinometer-using-a-raspberry-pi/
+See http://shieldlist.org/dynamicperception/dolly
 
-### Spectrometer
-See http://www.thingiverse.com/thing:148270 and http://myspectral.com/
 
-### Ultrasonic rangefinder
-See http://hackaday.com/2014/12/22/green-sweep-for-your-ultrasonic-rangefinder/
 
-### Colorimeter
-See http://www.appropedia.org/Open-source_colorimeter
 
-### GPS/GSM/GPRS
-Log GPS.
 
-- http://www.adafruit.com/products/98
-- http://www.adafruit.com/products/1272
-- http://shieldlist.org/cutedigi/gprs-gsm (with gsm)
-- http://shieldlist.org/antrax/gsm-gprs-gps
-- http://shieldlist.org/dss-circuits/i2c-gps
-- http://shieldlist.org/dexter/gps
-- http://shieldlist.org/liquidware/geoshield
-- http://shieldlist.org/libelium/gprs-dualband
-- http://shieldlist.org/libelium/gprs-quadband
-- http://shieldlist.org/libelium/gps
-- http://shieldlist.org/hwkitchen/gsmplayground
-- http://shieldlist.org/geekonfire/gprs
-- http://shieldlist.org/futuraelettronica/gsm
-- http://shieldlist.org/openelectronics/gsm900
-- http://shieldlist.org/mitek/gsm-gps
-- http://shieldlist.org/mci-electronics/gm862
-- http://shieldlist.org/sparkfun/gps
-- http://shieldlist.org/sparkfun/cellular
-- http://shieldlist.org/seeedstudio/gprs
 
-### Radio
 
-- http://shieldlist.org/argent/radio
-- http://shieldlist.org/sparkfun/am-fm-receiver
-- http://shieldlist.org/skpang/easyradio
 
-### FM transmitter
-See http://hackaday.com/2014/11/12/2-fm-transmitter-for-rasberry-pi/ and http://shieldlist.org/curious-inventor/fm-radio
-
-### Software-defined transceiver
-- http://hackaday.io/project/1538-portablesdr
-- http://hackaday.com/2014/11/05/hackaday-prize-finalist-a-portablesdr/
-
-### Software defined radio
-See http://hackaday.com/2015/01/14/portablesdr-makes-it-to-kickstarter/ and http://hackaday.com/2015/01/30/casing-up-the-teensy-sdr/ and http://hackaday.com/2014/11/19/rtl-sdr-as-a-spectrum-analyzer/ and http://hackaday.com/2015/02/09/portablesdr-needs-a-cinderella-story-to-finish-its-kickstarter/
-
-### Datalogger
-A general purpose datalogger. Includes an SD card, RTC, and prototyping perfboard area.
-
-- http://www.adafruit.com/products/243
-- http://www.adafruit.com/products/249
-- http://www.adafruit.com/products/1141
-- http://shieldlist.org/chipstobits/storage
-- http://shieldlist.org/ethermania/weathershield1
-- http://shieldlist.org/nuelectronics/datalog-io
-- http://shieldlist.org/snootlab/memoire
-- http://shieldlist.org/seeedstudio/stalker
