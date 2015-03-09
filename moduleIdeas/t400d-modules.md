@@ -26,13 +26,13 @@ PCB design will follow the guidelines listed in (a yet to be written design docu
 - Pax Instruments name and logo (This should be a part in the Eagle library)
 - Open hardware logo
 - License information
+- Arduino pinmap
 
 ## Discrete modules
 ===
 Discrete modules are simple boards. Each discrete module fits in a single slot of the three available slots of the T400D development board.
 
 Each module may have one or more ICs as long as they are intimately related. For example, a thermocouple module may have an ADC to measure voltage from the thermocouple and a seperate IC to measure junction temperature.
-
 A good discrete module candidate will meet the following criteria.
 
 - All components will fit onto a single discrete module board
@@ -41,16 +41,47 @@ A good discrete module candidate will meet the following criteria.
 - The module does not interfere with neighboring modules, the main PCB, or the enclosure
 - The module can be operated at 3.3V or with a boot converter on the module operating with a 3.3V input
 - The module can have anu number of i2c devices
-- The module can require up to one of either a SPI device, analog output to MCU, or digital output to MCU
+- The module can require up to one of either a lot device, analog output to MCU, or digital output to MCU
 - The module requires no more than one SPI device
 - There exists Arduino libraries for all module ICs
 - There exists Eagle files for all IC components
 
+How do we decide which modules we make first?
+
+Tier | Description | Example
+---|---|---
+1 | Direct sensing functionality | Humidity sensor, light sensor
+2 | Auxiliary functionality | flash storage, radio transciever
+3 | | 
+
 Prototype of the T400D development board with three perf board modules installed:  
 ![image](t400d-pcb.png)
 
+We may want to brekaout VBUS or other power source to the side of the module area. We may want to make modules that draw more power than the 3.3V regulator can provide.
+
+### Module pinout
+Each module has the same connector. The ports will have DATA1, DATA2, and DATA3 as the CS pins. the space between module one and module two will have DATA4. The space between module two and module three will have DATA5 (formerly, TXLED). With this configuration DATA4 and DATA5 will be broken out for full size modules. They will also be available for breadboarding if the user adds a header across all twenty-six module pins.
+
+Port pin | Function
+---|---
+1 | 3.3V
+2 | GND
+3 | SDA
+4 | SCL
+5 | MISO
+6 | MOSI
+7 | SCK
+8 | DATA<1,2,3>
+
+### Physical constraints
+The distance between the PCB and the LCD is 4.7 mm. The distance between the PCB and the battery compartment is at least 1 mm.
+
+The enclosure is designed around a 1.6 mm thick PCB.
+
 ### Alcohol gas sensor
-__Candidacy:__ good
+__Status:__  In discovery phase  
+__Evaluation:__ Good candidate  
+__Requirements:__  Will likely require the sensor be mounted on the top panel PCB.
 
 This alcohol gas sensor is sold by Sparkfun. From Sparkfun's description: "This alcohol sensor is suitable for detecting alcohol concentration on your breath... It has a high sensitivity and fast response time. Sensor provides an analog resistive output based on alcohol concentration. The drive circuit is very simple, all it needs is one resistor. A simple interface could be a 0-3.3V ADC."
 
@@ -62,7 +93,9 @@ Simple schematic for similar snesor:
 See https://www.sparkfun.com/products/8880, http://shieldlist.org/gfxhax/drinkshield and https://code.google.com/p/drinkshield/
 
 ### Smoke detector
-__Candidacy:__ good
+__Status:__  In discovery phase  
+__Evaluation:__ Good candidate  
+__Requirements:__  Will likely require the sensor be mounted on the top panel PCB.
 
 Discrete module to interface with a smoke detector sensor.
 
@@ -72,10 +105,16 @@ Simple schematic for similar snesor:
 See http://shieldlist.org/cutedigi/smoke
 
 ### Endocer
-Discrete module that detects rotary or other encoding.
+__Status:__  In discovery phase  
+__Evaluation:__ Not a good early product
+__Requirements:__  To be useful we may want to have the encoder on a cable.
+
+Discrete module that detects rotary or other encoding. We can only do this if we have interrup pins on for each module. This would be simple to implement. However, this component is not well aligned with the concept of lab instrumentation.
 
 ### 433/434/315 MHz receiver
-__Candidacy:__ poor
+__Status:__  In discovery phase  
+__Evaluation:__ Poor candidate  
+__Requirements:__ To be useful this require a transmitter.
 
 Discrete module for radio transmitting/receiving. The transmitters are smaller than the receivers, so that may be the best module to start with.
 
@@ -86,8 +125,12 @@ There are modules we can drop onto a breakout board, but we may be better design
 
 See http://shieldlist.org/freetronics/433mhzreceiver and https://www.sparkfun.com/products/10534
 
+The receiver is not terribly userful unless we also have a transmitter. These appear rather large for our module size.
+
 ### Humidity sensor
-__Candidacy:__ good
+__Status:__  In discovery phase  
+__Evaluation:__ Good candidate
+__Requirements:__  
 
 Discrete module to interface with a humidity sensor.
 
@@ -97,7 +140,9 @@ HTU21D breakout from Sparkfun:
 See https://www.sparkfun.com/products/8257 and https://www.sparkfun.com/products/12064
 
 ### Pressure sensor
-__Candidacy:__ good
+__Status:__  In discovery phase  
+__Evaluation:__ Good candidate  
+__Requirements:__  
 
 Discrete module to interface with a pressure sensor. Can connect via cable to another PCB with the pressure sensor. Then the user can mount it wherever they like.
 
@@ -107,22 +152,30 @@ MPL3115A2 from Sparkfun:
 See https://www.sparkfun.com/products/8257
 
 ### Accelerometer
-Discrete module to breakout an accelerometer IC. The IC may include a gyroscope.
+__Status:__  In discovery phase  
+__Evaluation:__ Poor  
+__Requirements:__  
+
+Discrete module to breakout an accelerometer IC. The IC may include a gyroscope. This would be a simple breakout board. We would need some lab instrument use cases for this to be a good module candidate.
 
 ![image](Accelerometer-and-Gyro-Breakout-MPU-6050.png)
 
 See http://shieldlist.org/criticalvelocity/accelerometer, https://www.sparkfun.com/products/9836, and https://www.sparkfun.com/products/11028
 
 ### Perf board
-__Candidacy:__ good
+__Status:__  In discovery phase  
+__Evaluation:__ Good candidate  
+__Requirements:__  
 
 Simple module with a perfboard pattern.
 
 Three perfboard modules installed in a prototype of the T400D:  
 ![image](perfboard-pcb.png)
 
-### Surface mount breakout
-__Candidacy:__ good
+### Surface mount protoboard
+__Status:__  In discovery phase  
+__Evaluation:__ Good candidate
+__Requirements:__ Must be tested. I have not used this typ of protoboard.
 
 We can make breakout modules for various surface mount footprints. The remaining area can be a series of SMT pads such that passive components can be mounted to the board and traces made by dridging with solder.
 
@@ -132,7 +185,9 @@ Here is what the patter can look like:
 ![image](smd-proto-pattern.png)
 
 ### Real time clock
-__Candidacy:__ good
+__Status:__  In discovery phase  
+__Evaluation:__ Good candidate  
+__Requirements:__  
 
 Module for the RTC used in the T400. The RTC module should also include a backkup battery.
 
@@ -140,7 +195,9 @@ Sample schematic from the T400:
 ![image](DS3231-RTC-schematic.png)
 
 ### SPI flash (W25Q80BV)
-__Candidacy:__ good
+__Status:__  In discovery phase  
+__Evaluation:__ 
+__Requirements:__  
 
 Module for the SPI flash used in the T400.
 
@@ -152,7 +209,7 @@ Discrete module that gives one or more PWM outputs that can control servo motors
 
 See http://www.adafruit.com/product/815
 
-### Bluetooth low enerby (BLE)
+### Bluetooth low energy (BLE)
 It would be great to have a BLE module as a discrete module. We'll have to do more research to determine what is out there right now. This space is moving quickly.
 
 See http://hackaday.com/2014/10/20/weightless-thing-for-oct-20-0100/ and http://shieldlist.org/mkroll/ble
@@ -227,7 +284,7 @@ Discrete module that provides one or more analog input channels
 
 See http://shieldlist.org/appliedplatonics/analoginput
 
-### DAC
+### DAC`	 	
 Discrete module that outputs one or more analog signals via a digital-to-analog converter.
 
 ### GPIO
